@@ -3,15 +3,16 @@
 import time
 import fourletterphat as flp
 
+flp.set_brightness(15)
 
 while True:
-	flp.print_str(time.strftime("%I%M"))
-	amp = time.strftime("%p")
-	if amp == "AM":
-		flp.set_decimal(1, 0)
-	else:
-		flp.set_decimal(1, 1)
-	flp.show()
-	time.sleep(0.1)
-
-
+    tim = time.strftime("%H%M")
+    sec = time.strftime("%S")
+    flp.print_str(tim)
+    amp = time.strftime("%p")
+    if int(sec) % 2 == 0:
+        flp.set_decimal(1, 1)
+    else:
+        flp.set_decimal(1, 0)
+    flp.show()
+    time.sleep(0.1)
